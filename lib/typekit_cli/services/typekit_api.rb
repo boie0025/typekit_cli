@@ -20,6 +20,8 @@ module TypekitCLI
         end
       end
 
+      # @returns [String] URL for endpoint from config or default, depending on
+      #  if TYPEKIT_JSON_ENDPOINT is set or not.
       def json_endpoint
         @json_endpoint ||= (ENV['TYPEKIT_JSON_ENDPOINT'] || DEFAULT_ENDPOINT)
       end
@@ -29,10 +31,12 @@ module TypekitCLI
         HTTParty.get(base_url, query: query_parameters, headers: headers).to_h
       end
 
+      # @return [String] the url built, including endpoint, resource and ID if provided.
       def base_url
         [json_endpoint, resource, id].compact.join('/')
       end
 
+      # @return [Hash] headers to set up authentication for connecting to the API.
       def headers
         { "X-Typekit-Token" => typekit_token }
       end

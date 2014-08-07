@@ -66,7 +66,6 @@ describe TypekitCLI::Kit do
 
   end
 
-
   context 'class methods' do
     subject { TypekitCLI::Kit }
     describe '.all' do
