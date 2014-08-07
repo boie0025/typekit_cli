@@ -1,5 +1,5 @@
-require "typekit_cli/version"
+Gem.find_files("typekit_cli/**/*.rb").each { |path| require path }
 
 module TypekitCLI
-  # Your code goes here...
+  class Services::ConfigurationError < StandardError; end
 end

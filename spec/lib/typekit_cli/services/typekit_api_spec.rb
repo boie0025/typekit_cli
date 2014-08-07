@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'httparty'
+#require 'httparty'
 
 module TypekitCLI
   module Services
@@ -31,11 +31,19 @@ module TypekitCLI
       end
 
       describe '#execute!' do
+        let(:httparty_params) { [full_url, query: query_parameters, headers: headers] }
+
         it 'returns an HTTParty object' do
           allow(ENV).to receive(:[]).and_return('ABCDEFG') # for auth token.
-          httparty_params = [full_url, query: query_parameters, headers: headers]
+
           expect(HTTParty).to receive(:get).with(*httparty_params)
           subject.execute!
+        end
+
+        it 'raises an exception if the auth token is not set' do
+          allow(ENV).to receive(:[]).and_return(nil) # for auth token.
+          allow(HTTParty).to receive(:get)
+          expect { subject.execute! }.to raise_error ConfigurationError
         end
       end
 

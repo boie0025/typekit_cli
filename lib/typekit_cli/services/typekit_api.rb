@@ -1,3 +1,4 @@
+require 'httparty'
 module TypekitCLI
   module Services
     class TypekitAPI
@@ -23,8 +24,9 @@ module TypekitCLI
         @json_endpoint ||= (ENV['TYPEKIT_JSON_ENDPOINT'] || DEFAULT_ENDPOINT)
       end
 
+      # @return [Hash] the response from Typekit
       def execute!
-        HTTParty.get(base_url, query: query_parameters, headers: headers)
+        HTTParty.get(base_url, query: query_parameters, headers: headers).to_h
       end
 
       def base_url
@@ -39,7 +41,7 @@ module TypekitCLI
 
       def typekit_token
         unless (typekit_token = ENV['TYPEKIT_TOKEN'])
-          raise Exception, "You must set a TYPEKIT_TOKEN environment variable."
+          raise ConfigurationError, "You must set a TYPEKIT_TOKEN environment variable."
         end
         typekit_token
       end
