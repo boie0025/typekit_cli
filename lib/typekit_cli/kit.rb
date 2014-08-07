@@ -8,7 +8,6 @@ module TypekitCLI
       @attributes = attributes
     end
 
-
     # Convenience methods - delegation to kit_attributes.
     %i(name id analytics domains families).each do |meth|
       define_method(meth) { kit_attributes[meth.to_s] }
