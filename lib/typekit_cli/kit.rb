@@ -18,6 +18,7 @@ module TypekitCLI
       define_method(meth) { kit_attributes[meth.to_s] }
     end
 
+    # @return [Hash] the attributes of the kit.
     def kit_attributes
       attributes["kit"]
     end
@@ -26,6 +27,7 @@ module TypekitCLI
       !!errors
     end
 
+    # @return [Array<Family>] an array of family objects for this kit.
     def families
       kit_attributes["families"].map do |family|
         Family.new(family)

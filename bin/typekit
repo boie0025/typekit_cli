@@ -22,10 +22,13 @@ if opts.ids?
   opts[:ids].each do |id|
     kit = TypekitCLI::Kit.find(id)
 
+    # outputs information about the kit with puts
     TypekitCLI::KitShow.new(kit).display
 
     if opts.families?
       kit.families.each do |family|
+
+        # outputs information about the family with puts
         TypekitCLI::FamilyShow.new(family).display
       end
     end

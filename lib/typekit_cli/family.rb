@@ -3,6 +3,7 @@ module TypekitCLI
     ATTRIBUTES = %i(id name slug css_names css_stack subset variations)
     attr_reader :family_attributes
 
+    # @param [Hash] family_attributes a hash containing family attributes.
     def initialize(family_attributes)
       @family_attributes = family_attributes
     end

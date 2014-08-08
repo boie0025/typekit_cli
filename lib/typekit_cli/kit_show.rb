@@ -8,6 +8,8 @@ module TypekitCLI
       self.kit = kit
     end
 
+    # @note this method outputs with puts directly.
+    # @return nil.
     def display
       if kit.has_errors?
         puts "Error(s): #{kit.errors.join(', ')}"
