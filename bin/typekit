@@ -1,0 +1,53 @@
+#!/usr/bin/ruby
+
+$:.unshift(File.expand_path(File.dirname(__FILE__) + '/../lib'))
+
+# Flush output immediately
+$stdout.sync = true
+
+require 'slop'
+require 'typekit_cli'
+
+opts = Slop.parse(help: true, strict: true) do
+  banner 'Usage: typekit --ids OR --list [options]'
+  description 'typekit'
+  on 'l', 'list', 'List all kit IDs for current token.'
+  on 'ids=', 'Kit ID(s) to retrieve information for. eg --ids abc OR --ids abc,def for both.', as: Array
+  on 'f', 'families', '  Display family details for each kit.  Use with --ids', argument: :optional
+  on 'n', 'with-names', '  List with kit names.  Use with --list slower, makes an extra API call for each kit.', arguments: :optional
+end
+
+if opts.ids?
+  puts 'Adobe Typekit kit information'
+  opts[:ids].each do |id|
+    kit = TypekitCLI::Kit.find(id)
+
+    TypekitCLI::KitShow.new(kit).display
+
+    if opts.families?
+      kit.families.each do |family|
+        TypekitCLI::FamilyShow.new(family).display
+      end
+    end
+
+  end
+end
+
+if opts.list?
+  puts 'Listing Adobe Typekit kits:'
+  if (result = TypekitCLI::Kit.all).any?
+    result["kits"].each do |kit|
+      print "id: #{kit["id"]}"
+      if opts.with_names?
+        name = TypekitCLI::Kit.find(kit['id']).name
+        puts ", name: #{name}"
+      else
+        puts '' #newline
+      end
+    end
+  end
+end
+
+unless opts.list? || opts.ids?
+  puts opts
+end

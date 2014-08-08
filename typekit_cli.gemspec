@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = TypekitCLI::VERSION
   spec.authors       = ["Nic Boie"]
   spec.email         = ["boie0025@gmail.com"]
-  spec.description   = "Provide CLI interface to query kits"
-  spec.summary       = "This gem provides a cli interface to lookup kits on Typekit, and their respective information."
+  spec.description   = "Provide CLI interface to query kits."
+  spec.summary       = "This gem provides a cli interface to lookup kits, and their respective information on Typekit."
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "httparty"
+  spec.add_dependency "slop"
 
   spec.required_ruby_version = '>= 2.0.0'
 
