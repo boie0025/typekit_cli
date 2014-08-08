@@ -14,6 +14,12 @@ OR
 * install with rake:
 ```rake install```
 
+---
+
+## Configuration
+* Set the environment variable for TYPEKIT_TOKEN
+```export TYPEKIT_TOKEN=[your token here]```
+
 ## Usage
 
 
