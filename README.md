@@ -4,7 +4,15 @@ Get information about your typekits from the command line
 
 ## Installation
 
-gem install /full/path/to/typekit_cli
+* build the gem
+```rake build```
+* install
+gem install /full/path/to/typekit_cli-0.0.1.gem
+
+OR
+
+* install with rake
+```rake install```
 
 ## Usage
 
