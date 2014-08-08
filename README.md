@@ -32,3 +32,6 @@ OR
 ## Options
     -f, --families          Display family details for each kit.  Use with --ids
     -n, --with-names        List with kit names.  Use with --list slower, makes an extra API call for each kit.
+
+## Note
+This gem is NOT published to RubyGems.
