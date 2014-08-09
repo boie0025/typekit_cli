@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/boie0025/typekit_cli.svg?branch=master)](https://travis-ci.org/boie0025/typekit_cli)
 [![Code Climate](https://codeclimate.com/github/boie0025/customer_portal/badges/gpa.svg)](https://codeclimate.com/github/boie0025/customer_portal)
+[![Coverage Status](https://coveralls.io/repos/boie0025/typekit_cli/badge.png?branch=master)](https://coveralls.io/r/boie0025/typekit_cli?branch=master)
 
 # Adobe Typekit Command Line Interface
 
