@@ -92,6 +92,7 @@ describe TypekitCLI::Kit do
     describe '.all' do
       before do
         allow(HTTParty).to receive(:get).and_return all_json_response
+        allow(ENV).to receive(:[]).and_return('abcdef') # for auth token.
       end
 
       it 'delegates to TypekitAPI#execute!' do
@@ -118,6 +119,7 @@ describe TypekitCLI::Kit do
     describe '.find' do
       before do
         allow(HTTParty).to receive(:get).and_return find_json_response
+        allow(ENV).to receive(:[]).and_return('abcdef') # for auth token.
       end
 
       it 'delegates to TypekitAPI#execute!' do
