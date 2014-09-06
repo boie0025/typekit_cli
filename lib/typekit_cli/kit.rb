@@ -34,9 +34,7 @@ module TypekitCLI
       end
     end
 
-    # @return Hash of kits included for the current env TYPEKIT_TOKEN
     class << self
-
 
       # Provides a simple listing
       # @return [Hash] Returns a hash if kits are found.  Error message otherwise.
