@@ -21,9 +21,5 @@ module TypekitCLI
       end
     end
 
-    private
-
-
   end
-
 end
